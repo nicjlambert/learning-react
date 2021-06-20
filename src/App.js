@@ -23,6 +23,7 @@ objectID: 1,
 }
 ];
 
+// App component
 function App(){ 
 // you can do somethig here between
 // the function signature and the return
@@ -33,11 +34,21 @@ function App(){
     <div>
      <h1>My Hacker Stories</h1>
 
-     <label htmlFor="search">Search:</label>
-     <input id="search" type="text"/>
+     <Search/>
 
      <hr/>
-     <ul>
+
+     <List/>
+     
+    </div>
+  );
+}
+
+// List component
+function List(){
+
+  return(
+<ul>
        {list.map(function(item){
          return (
          <li key={item.objectID}>
@@ -51,8 +62,23 @@ function App(){
          );
        })}
      </ul>
-    </div>
   );
 }
+
+// Search component
+function Search(){
+
+  return(
+    <div>
+
+      <label htmlFor="search">Search:</label>
+      <input id="search" type="text"/>
+
+    </div>
+
+  );
+}
+
+
 
 export default App;
