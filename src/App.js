@@ -23,7 +23,7 @@ objectID: 1,
 }
 ];
 
-// App component
+// App component (parent)
 function App(){ 
 // you can do somethig here between
 // the function signature and the return
@@ -44,7 +44,7 @@ function App(){
   );
 }
 
-// List component
+// List component (child)
 function List(){
 
   return(
@@ -65,7 +65,7 @@ function List(){
   );
 }
 
-// Search component
+// Search component (child)
 function Search(){
 
   return(
