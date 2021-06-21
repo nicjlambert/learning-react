@@ -44,9 +44,9 @@ function App(){
   );
 }
 
-// List component (child)
-function List(){
 
+function List(){
+// List component (child)
   return(
 <ul>
        {list.map(function(item){
@@ -65,19 +65,26 @@ function List(){
   );
 }
 
+
+const Search = () =>{
 // Search component (child)
-function Search(){
+
+// do something in between
+  const handleChange = (event) => {
+    console.log(event.target.value);
+  };
 
   return(
     <div>
 
       <label htmlFor="search">Search:</label>
-      <input id="search" type="text"/>
+      <input id="search" type="text"
+      onChange={handleChange}/>
 
     </div>
 
   );
-}
+};
 
 
 
