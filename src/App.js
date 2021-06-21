@@ -4,31 +4,30 @@ import * as React from 'react';
 // everytime the function is called
 // a variable declared with const cannot be re-assigned
 
-const list = [
-{
-title:'React',
-url: 'https://reactjs.org/',
-author: 'Jordan Walke',
-num_comments: 3,
-points: 4,
-objectID: 0,
-},
-{
-title: 'Redux',
-url: 'https://redux.js.org/',
-author: 'Dan Abramov, Andrew Clark',
-num_comments: 2,
-points: 5,
-objectID: 1,
-}
-];
 
 // App component (parent)
-function App(){ 
+const App =()=> { 
 // you can do somethig here between
 // the function signature and the return
 // statement
-
+const stories = [
+  {
+  title:'React',
+  url: 'https://reactjs.org/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0,
+  },
+  {
+  title: 'Redux',
+  url: 'https://redux.js.org/',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1,
+  }
+  ];
 
   return(
     <div>
@@ -38,33 +37,39 @@ function App(){
 
      <hr/>
 
-     <List/>
+     <List list={stories}/>
      
     </div>
   );
-}
+};
 
 
-function List(){
-// List component (child)
-  return(
-<ul>
-       {list.map(function(item){
-         return (
-         <li key={item.objectID}>
-           <span>
-            <a href={item.url}>{item.title}</a>
-           </span>
-           <span>, {item.author}, </span>
-           <span>{item.num_comments}</span>
-           <span>{item.points}</span>
-         </li>
-         );
-       })}
-     </ul>
-  );
-}
+const List =(props)=> (
+  // List component (child)
+  <ul>
+         {props.list.map((item)=>(
+           <Item key={item.objectID} item={item}/>
+         ))}
+       </ul>
+);
 
+
+const Item =(props)=>(
+  <li>
+    <span>
+      <a href={props.item.url}> {props.item.title}</a>
+    </span>
+    <span>
+       , {props.item.author}   
+    </span>
+    <span>
+      , {props.item.num_comments}
+    </span>
+    <span>
+    , {props.item.points}
+    </span>
+  </li>
+);
 
 const Search = () =>{
 // Search component (child)
@@ -85,7 +90,5 @@ const Search = () =>{
 
   );
 };
-
-
 
 export default App;
