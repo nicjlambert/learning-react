@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render( // uses an HTML node to replace it with JSX
+// creates as instance of your App component
   <React.StrictMode>
-    <App /> // creates as instance of your App component
+    <App />
   </React.StrictMode>,
   document.getElementById('root') // where the applications enters your HTML ie public/index.html
 );
