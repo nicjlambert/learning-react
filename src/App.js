@@ -36,14 +36,15 @@ const handleSearch = (event) =>{
 };
 
 const searchedStories = stories.filter((story) =>
-  story.title.includes(searchTerm)
+  story.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
 
   return(
     <div>
      <h1>My Hacker Stories</h1>
     {/* // B */}
-     <Search onSearch={handleSearch}/>
+     <Search search={searchTerm}
+     onSearch={handleSearch}/>
 
      <hr/>
 
@@ -54,38 +55,39 @@ const searchedStories = stories.filter((story) =>
 };
 
 
-const List =(props)=> (
+const List =({list})=> (
   // List component (child)
   <ul>
-         {props.list.map((item)=>(
+         {list.map((item)=>(
            <Item key={item.objectID} item={item}/>
          ))}
        </ul>
 );
 
-const Item =(props)=>(
+const Item =({item})=>(
   <li>
     <span>
-      <a href={props.item.url}> {props.item.title}</a>
+      <a href={item.url}> {item.title}</a>
     </span>
     <span>
-       , {props.item.author}   
+       , {item.author}   
     </span>
     <span>
-      , {props.item.num_comments}
+      , {item.num_comments}
     </span>
     <span>
-    , {props.item.points}
+    , {item.points}
     </span>
   </li>
 );
 
-const Search = (props) =>(
+const Search = ({search, onSearch}) =>(
+
 <div>
       <label htmlFor="search">Search:</label>
-      <input id="search" type="text"
-      onChange={props.onSearch}/>
+      <input id="search" type="text" value={search}
+      onChange={onSearch}/>
 </div>
-);
+  );
 
 export default App;
